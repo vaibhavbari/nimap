@@ -25,4 +25,21 @@ public class CategoryService implements ICategoryService  {
 	public void addCategory(Category pCategory){
 		gCategoryDao.save(pCategory);
 	}
+	
+	@Override
+	public void deleteCategory(int pId){
+		gCategoryDao.delete(pId);
+	}
+	
+	
+	@Override
+	public void updateCatory(Category pCategory){
+		gCategoryDao.save(pCategory);
+	}
+	
+	
+	@Override
+	public Category getCategory(int pId){
+		return gCategoryDao.findOne(pId);
+	}
 }

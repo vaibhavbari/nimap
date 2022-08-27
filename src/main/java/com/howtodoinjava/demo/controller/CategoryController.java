@@ -2,6 +2,7 @@ package com.howtodoinjava.demo.controller;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,28 +28,24 @@ public class CategoryController {
 		return pCategory.getCategoryid();
     }
 
-//	@RequestMapping("/deleteCategory/{id}")
-//    public void deleteCategory() 
-//    {
-//		List<Employee> employeesList = new ArrayList<Employee>();
-//		employeesList.add(new Employee(2,"Bhupesh","bari","bhupeshbari@gmail.com"));
-//		return employeesList;
-//    }
-//	
-//	@RequestMapping("/updateCategory/{id}")
-//    public void updateCategory() 
-//    {
-//		List<Employee> employeesList = new ArrayList<Employee>();
-//		employeesList.add(new Employee(2,"Bhupesh","bari","bhupeshbari@gmail.com"));
-//		return employeesList;
-//    }
-//
-//	@RequestMapping("/category/{id}")
-//    public Category getCategoryById() 
-//    {
-//		List<Employee> employeesList = new ArrayList<Employee>();
-//		employeesList.add(new Employee(2,"Bhupesh","bari","bhupeshbari@gmail.com"));
-//		return employeesList;
-//    }
+	@RequestMapping("/deleteCategory/{id}")
+    public String deleteCategory(@PathVariable("id") int pCategoryId) 
+    {
+		gCategoryService.deleteCategory(pCategoryId);
+		return "Success";
+    }
+	
+	@RequestMapping("/updateCategory")
+    public String updateCategory(@RequestBody Category pCategory) 
+    {
+		gCategoryService.updateCatory(pCategory);
+		return "Success";
+    }
+
+	@RequestMapping("/category/{id}")
+    public Category getCategoryById(@PathVariable("id") int pCategoryId) 
+    {
+		return gCategoryService.getCategory(pCategoryId);
+    }
 
 }
