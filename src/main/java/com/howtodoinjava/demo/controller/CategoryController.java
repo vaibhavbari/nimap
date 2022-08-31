@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.howtodoinjava.demo.model.Category;
 import com.howtodoinjava.demo.service.CategoryService;
@@ -17,8 +18,9 @@ public class CategoryController {
 	CategoryService gCategoryService;
 
 	@RequestMapping("/categories")
-	public List<Category> getCategories() {
-		return gCategoryService.getAllCategories();
+	public List<Category> getCategories(@RequestParam int pPageId ) {
+		int pPagesize=10;
+		return gCategoryService.getAllCategories(pPageId,pPagesize);
 	}
 
 	@PostMapping("/addcategory")

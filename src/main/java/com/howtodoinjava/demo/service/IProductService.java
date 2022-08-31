@@ -6,7 +6,7 @@ import java.util.List;
 import com.howtodoinjava.demo.model.Product;
 
 public interface IProductService {
-	public List<Product> getAllProduct();
+	public List<Product> getAllProduct(int pPageId,int pPageSize);
 	void addProduct(Product pProduct);
 	void deleteProduct(int id);
 	void updateProduct(Product pProduct);

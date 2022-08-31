@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.howtodoinjava.demo.model.Product;
 import com.howtodoinjava.demo.service.ProductService;
@@ -17,8 +18,9 @@ public class ProductController {
 	ProductService gProductService;
 
 	@RequestMapping("/product")
-	public List<Product> getProduct() {
-		return gProductService.getAllProduct();
+	public List<Product> getProduct(@RequestParam int pPageId ) {
+		int pPagesize=10;
+		return gProductService.getAllProduct(pPageId,pPagesize);
 	}
 
 	@PostMapping("/addproduct")
